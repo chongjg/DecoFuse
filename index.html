@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DecoFuse">
+  <meta name="keywords" content="fMRI-to-Video Decoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DecoFuse: Decomposing and Fusing the "What", "Where", and "How" for Brain-Inspired fMRI-to-Video Decoding</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<!--  <link rel="icon" href="./static/images/favicon.svg">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">DecoFuse: Decomposing and Fusing the "What", "Where", and "How" for Brain-Inspired fMRI-to-Video Decoding</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=PgqZ81EAAAAJ" target="_blank">Chong Li</a>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=NasDhEMAAAAJ" target="_blank">Jingyang Huo</a>,</span>
+              <span class="author-block">
+                <a href="https://weikanggong.github.io/" target="_blank">Weikang Gong</a>,</span>
+              <span class="author-block">
+                <a href="https://yanweifu.github.io/index.html" target="_blank">Yanwei Fu</a>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=DTbhX6oAAAAJ" target="_blank">Xiangyang Xue</a>,</span>
+              <span class="author-block">
+                <a href="https://www.dcs.warwick.ac.uk/~feng/" target="_blank">Jianfeng Feng</a></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Fudan University</span>
+          </div>
+        
+              <!-- ArXiv abstract Link -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.18211" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span> -->
+
+            <!-- Github link -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/chongjg/DecoFuse/tree/main" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <center>
+      <img src="./static/images/teaser.jpg" width="1000px"/>
+      </center>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Decoding visual experiences from brain activity is a significant challenge. Existing fMRI-to-video methods often focus on semantic content while overlooking spatial and motion information.
+            However, these aspects are all essential and are processed through distinct pathways in the brain. Motivated by this, we propose <b>DecoFuse</b>, a novel brain-inspired framework for decoding videos from fMRI signals.
+            It first decomposes the video into three components-semantic, spatial, and motion-then decodes each component separately before fusing them to reconstruct the video.
+            This approach not only simplifies the complex task of video decoding by decomposing it into manageable sub-tasks, but also establishes a clearer connection between learned representations and their biological counterpart, as supported by ablation studies.
+            Further, our experiments show significant improvements over previous state-of-the-art methods, achieving 82.4% accuracy for semantic classification, 70.6% accuracy in spatial consistency, a 0.212 cosine similarity for motion prediction, and 21.9% 50-way accuracy for video generation. 
+            Additionally, neural encoding analyses for semantic and spatial information align with the two-streams hypothesis, further validating the distinct roles of the ventral and dorsal pathways. Overall, DecoFuse provides a strong and biologically plausible framework for fMRI-to-video decoding.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+          <br/>
+          <div class="columns is-centered interpolation-panel">
+            <img src="./static/images/pipeline.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."
+                 style="width: 60%;"/>
+          </div>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+        <b>Details of DecoFuse framework.</b>
+        Neural features are extracted by an fMRI encoder and decomposed to semantic, spatial and motion embeddings through three independent encoders. 
+        These components are then fused to generate video via three stages: 
+        <b>(1) fMRI-to-image decoding</b>, which uses Stable Diffusion and ControlNet to generate static images based on high-level semantic and low-level spatial embeddings; 
+        <b>(2) fMRI-to-motion decoding</b>, predicting optical flow using an image- and fMRI-based motion decoder to capture dynamic elements of the video; 
+        <b>(3) fMRI-to-video decoding</b>, where the decoded image and optical flow are combined to generate the final video using a motion-conditioned video diffusion model.
+      </p></div>
+      </div>
+      <br/>
+      </div>
+    </div>
+    <!--/ Animation. -->
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Animation. -->
+        <!-- Paper video. -->
+    <div class="columns  has-text-centered">
+      <div class="column">
+          <h2 class="title is-3">Main Results</h2>
+          <h2 class="title is-4">fMRI-to-image Decoding</h2>
+          <div class="columns is-vcentered interpolation-panel">
+            <img src="./static/images/fMRI-to-image-result.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+  
+          <b> Results of fMRI-to-image reconstruction.</b> Our model successfully generates images that align well with the ground truth in both semantic and spatial aspects.
+          By comparing the results with and without semantic("what")/spatial("where") embeddings, we demonstrate that semantic and spatial embeddings significantly enhance the model's ability to accurately reconstruct and localize objects within the image.
+
+            </p>
+          </div>
+
+          <h2 class="title is-4">fMRI-to-motion Decoding</h2>
+          <div class="columns is-vcentered interpolation-panel">
+            <img src="./static/images/fMRI-to-motion-results.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+  
+          <b> Results of fMRI-to-motion decoding.</b> Our model effectively predicts optical flow based on fMRI and image data, demonstrating accurate motion decoding performance.
+
+            </p></div>
+          <h2 class="title is-4">fMRI-to-video Decoding</h2>
+          
+          <div class="columns is-vcentered interpolation-panel">
+            <!-- 第一列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">Ground Truth</p>
+              <img src="./static/videos/output_test_50_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/output_test_143_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/output_test_740_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/output_test_1030_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/output_test_1084_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+            </div>
+            <!-- 第二列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">Subject 1</p>
+              <img src="./static/videos/output_test_50_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_143_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_740_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_1030_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_1084_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+            </div>
+            <!-- 第三列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">Subject 2</p>
+              <img src="./static/videos/output_test_50_sub2.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_143_sub2.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_740_sub2.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_1030_sub2.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_1084_sub2.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+            </div>
+            <!-- 第四列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">Subject 3</p>
+              <img src="./static/videos/output_test_50_sub3.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_143_sub3.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_740_sub3.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_1030_sub3.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/output_test_1084_sub3.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+            </div>
+          </div>
+          <h2 class="title is-4">More Results for Subject 1</h2>
+          <div class="columns is-vcentered interpolation-panel">
+            <!-- 第一列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">GT</p>
+                  <img src="./static/videos/subject1/output_test_218_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_223_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_60_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_123_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_593_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_743_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+            </div>
+            <!-- 第二列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">Pred</p>
+                  <img src="./static/videos/subject1/output_test_218_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_223_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_60_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_123_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_593_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_743_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  
+            </div>
+            <!-- 第三列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">GT</p>
+              <img src="./static/videos/subject1/output_test_303_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_418_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_492_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_574_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_879_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+                  <img src="./static/videos/subject1/output_test_978_GT.gif"
+                  class="interpolation-image"
+                  alt="Ground Truth video"/>
+            </div>
+            <!-- 第四列 -->
+            <div class="column">
+              <p class="has-text-centered is-size-4">Pred</p>
+              <img src="./static/videos/subject1/output_test_303_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_418_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_492_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_574_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_879_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+                  <img src="./static/videos/subject1/output_test_978_sub1.gif"
+                  class="interpolation-image"
+                  alt="Predicted video"/>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <!--/ Animation. -->
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Differential Neural Encoding</h2>
+          <br/>
+          <div class="columns is-centered interpolation-panel">
+            <img src="./static/images/neural-encoding.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."
+                 style="width: 80%;"/>
+          </div>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+
+        <b>Results of differential neural encoding.</b> The differential encoding distribution for "what" and "where" is represented by p_{spa} and visualized on the medial view of the brain surface. 
+        Red indicates regions that encode "where" information, while blue indicates regions that encode "what" information. These results align with the two-streams hypothesis.
+
+          </p></div>
+      </div>
+        <br/>
+      </div>
+    </div>
+    <!--/ Animation. -->
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
